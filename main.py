@@ -1,6 +1,7 @@
 from models import *
 from views import *
 from api import *
+from app import app
 
 
 def create_tables():
