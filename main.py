@@ -1,6 +1,6 @@
 from models import db, Paint, Description
 from views import *
-from app import app
+from api import *
 
 
 def create_tables():
