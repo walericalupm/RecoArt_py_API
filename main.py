@@ -1,6 +1,5 @@
-from models import *
+from models import db, Paint, Description
 from views import *
-# from api import *
 from app import app
 
 
