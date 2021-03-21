@@ -1,4 +1,4 @@
-from peewee import Model, CharField, ForeignKeyField
+from peewee import Model, CharField, IntegerField, ForeignKeyField
 from app import db
 
 
@@ -17,9 +17,9 @@ class Paint(BaseModel):
 
 
 class Description(BaseModel):
-    Language = CharField(max_length=2)
+    Language = IntegerField()
     Name = CharField(max_length=300)
-    Pseudonym = CharField(max_length=300)
+    Pseoudoname = CharField(max_length=300)
     Medium = CharField(max_length=300)
     Description = CharField(max_length=300)
     Paint = ForeignKeyField(Paint, backref='Descriptions')
