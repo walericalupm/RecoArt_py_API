@@ -1,4 +1,4 @@
-from peewee import Model, CharField, IntegerField, ForeignKeyField
+from peewee import Model, CharField, IntegerField, TextField, ForeignKeyField
 from app import db
 
 
@@ -12,7 +12,7 @@ class Paint(BaseModel):
     Artist = CharField(max_length=300)
     Year = CharField(max_length=4)
     Location = CharField(max_length=200)
-    Image = CharField(max_length=1000)
+    Image = TextField()
     Link = CharField(max_length=500)
 
 
@@ -21,5 +21,5 @@ class Description(BaseModel):
     Name = CharField(max_length=300)
     Pseoudoname = CharField(max_length=300)
     Medium = CharField(max_length=300)
-    Description = CharField(max_length=300)
+    Description = TextField()
     Paint = ForeignKeyField(Paint, backref='Descriptions')
