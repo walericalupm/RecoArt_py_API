@@ -9,6 +9,10 @@ ENV_TEST_DIR = os.path.join(ROOT_DIR, '.env.test')
 V1 = '/v1'
 BASE_URI_V1 = '/api' + V1
 
+# External APIs
+RECOART_WIKI_API_URI = "https://recoart-py-wiki-api.herokuapp.com/api/v1"
+RECOART_WIKI_DESCRIPTIONS_URI = RECOART_WIKI_API_URI + "/wikidescriptions/"
+
 JSON_MIME_TYPE = 'application/json'
 
 NOT_FOUND_MESSAGE = 'Resource Not Found'

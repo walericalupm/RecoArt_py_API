@@ -1,4 +1,4 @@
-from peewee import Model, CharField, TextField, MySQLDatabase, ForeignKeyField
+from peewee import Model, CharField, TextField, BooleanField, ForeignKeyField, MySQLDatabase
 
 remote_db = MySQLDatabase(None)
 
@@ -15,6 +15,7 @@ class Paint(BaseModel):
     Location = CharField(max_length=200)
     Image = TextField()
     Link = CharField(max_length=500)
+    ExistsWikiDescription = BooleanField(default=False)
 
 
 class Description(BaseModel):
