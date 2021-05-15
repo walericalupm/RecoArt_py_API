@@ -21,7 +21,7 @@ before_install:
 
 install:
   - docker build -t walericalupm/recoart-api .
-  - docker run -d -p 80:80 --rm --name recoart-wiki-api walericalupm/recoart-api
+  - docker run -d -p 80:80 --rm --name recoart-api walericalupm/recoart-api
 
 script:
   # Test API
