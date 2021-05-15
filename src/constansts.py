@@ -8,6 +8,8 @@ ENV_TEST_DIR = os.path.join(ROOT_DIR, '.env.test')
 # API
 V1 = '/v1'
 BASE_URI_V1 = '/api' + V1
+URI_RECOART_PAINT = '/art/code'
+RECOART_CODE_PARAM = '/<string:recoart_code>'
 
 # External APIs
 RECOART_WIKI_API_URI = "https://recoart-py-wiki-api.herokuapp.com/api/v1"
@@ -30,3 +32,6 @@ GET = 'GET'
 POST = 'POST'
 PUT = 'PUT'
 DELETE = 'DELETE'
+
+# Various
+MESSAGE = 'message'

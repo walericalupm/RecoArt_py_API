@@ -4,7 +4,8 @@ from random import randint, seed
 from dotenv import dotenv_values
 from src.constansts import ENV_TEST_DIR
 import src.models as models
-from src.constansts import
+from random import randrange
+
 
 class BaseTestCase(unittest.TestCase):
 
@@ -21,6 +22,7 @@ class BaseTestCase(unittest.TestCase):
 
 
 recoart_paints = []
+recoart_paints_descriptions = []
 
 
 def load_database():
@@ -45,13 +47,24 @@ def drop_tables():
 
 
 def seed_database():
-    
-
-
-def get_random_wikipedia_paint_catalog() -> models.WikipediaPaintCatalog:
-    wikipedia_catalog_paints_lenght = len(wikipedia_catalog_paints) - 1
-    random_position = randint(0, wikipedia_catalog_paints_lenght)
-    return wikipedia_catalog_paints[random_position]
+    for _ in range(10):
+        recoart_paint_to_save = create_fake_paint()
+        recoart_paints.append(recoart_paint_to_save)
+        recoart_paint_to_save.save()
+        # create 1-4 descriptions per paint
+        language = 0
+        for _ in range(randrange(3)):
+            recoart_paint_description_to_save = create_fake_description(recoart_paint_to_save, language)
+            recoart_paints_descriptions.append(recoart_paint_description_to_save)
+            recoart_paint_description_to_save.save()
+            language = language+1
+    # Create Mona Lisa Paint
+    monalisa_paint = get_monalisa_paint()
+    monalisa_paint.save()
+    monalisa_fake_description = create_fake_description(monalisa_paint, 0)
+    monalisa_fake_description.save()
+    monalisa_fake_description = create_fake_description(monalisa_paint,1)
+    monalisa_fake_description.save()
 
 
 def get_recoart_fake_code() -> str:
@@ -60,12 +73,45 @@ def get_recoart_fake_code() -> str:
     return fake.bothify(text='AP_99#_###')
 
 
-def get_wikidata_random_language() -> str:
-    random_language_int = randint(0, 3)
-    if random_language_int == 0:
-        return LANG_ES
-    if random_language_int == 1:
-        return LANG_EN
-    if random_language_int == 2:
-        return LANG_FR
-    else: return LANG_IT
+def get_recoart_code() -> str:
+    recoart_paints_length = len(recoart_paints)
+    random_position = randrange(recoart_paints_length)
+    return recoart_paints[random_position].Code
+
+
+def create_fake_paint() -> models.Paint:
+    fake = Faker()
+    seed(0)
+    faker_image_expression = ''.join([char*400 for char in '?#??#?#??##?#'])
+    return models.Paint(Code=fake.bothify('AP_99#_###'),
+                        Artist=fake.bothify('ARTIST_##'),
+                        Year=fake.year(),
+                        Location=fake.city(),
+                        Image=fake.bothify(faker_image_expression),
+                        Link=fake.url(),
+                        ExistsWikiDescription=False)
+
+
+def get_monalisa_paint() -> models.Paint:
+    fake = Faker()
+    seed(2)
+    faker_image_expression = ''.join([char * 400 for char in '?#??#?#??##?#'])
+    return models.Paint(Code='AP_001_001',
+                        Artist='Leonardo da Vinci',
+                        Year=1530,
+                        Location='Musée du Louvre, Paris',
+                        Image=fake.bothify(faker_image_expression),
+                        Link='https://www.louvre.fr/en/oeuvre-notices/mona-lisa-portrait-lisa-gherardini-wife-francesco-del-giocondo',
+                        ExistsWikiDescription=True)
+
+
+def create_fake_description(paint: models.Paint, language:int) -> models.Description:
+    fake = Faker()
+    seed(3)
+    return models.Description(Language=language,
+                              Name=fake.text(max_nb_chars=20),
+                              Pseudonym=fake.text(max_nb_chars=20),
+                              Medium=fake.text(max_nb_chars=20),
+                              Description=fake.text(max_nb_chars=200),
+                              Paint=paint)
+
