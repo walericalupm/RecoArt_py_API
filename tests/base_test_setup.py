@@ -63,7 +63,7 @@ def seed_database():
     monalisa_paint.save()
     monalisa_fake_description = create_fake_description(monalisa_paint, 0)
     monalisa_fake_description.save()
-    monalisa_fake_description = create_fake_description(monalisa_paint,1)
+    monalisa_fake_description = create_fake_description(monalisa_paint, 1)
     monalisa_fake_description.save()
 
 
@@ -102,7 +102,7 @@ def get_monalisa_paint() -> models.Paint:
                         Location='Musée du Louvre, Paris',
                         Image=fake.bothify(faker_image_expression),
                         Link='https://www.louvre.fr/en/oeuvre-notices/mona-lisa-portrait-lisa-gherardini-wife-francesco-del-giocondo',
-                        ExistsWikiDescription=True)
+                        ExistWikiDescription=True)
 
 
 def create_fake_description(paint: models.Paint, language:int) -> models.Description:
