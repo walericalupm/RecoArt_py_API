@@ -15,7 +15,7 @@ class Paint(BaseModel):
     Location = CharField(max_length=200)
     Image = TextField()
     Link = CharField(max_length=500)
-    ExistsWikiDescription = BooleanField(default=False)
+    ExistWikiDescription = BooleanField(default=False)
 
 
 class Description(BaseModel):

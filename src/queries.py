@@ -8,7 +8,7 @@ from src.wikidata_api import get_wikidata_descriptions
 def get_art_painting_by_code(code):
     try:
         recoart_paint = Paint.select().where(Paint.Code == code).get()
-        if recoart_paint.ExistsWikiDescription:
+        if recoart_paint.ExistWikiDescription:
             wikidata_code, wikidata_descriptions_response = get_wikidata_descriptions(recoart_paint.Code)
             if wikidata_code is OK:
                 wikidata_descriptions = wikidata_descriptions_response.Descriptions
