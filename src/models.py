@@ -1,4 +1,4 @@
-from peewee import Model, CharField, TextField, BooleanField, ForeignKeyField, MySQLDatabase
+from peewee import Model, CharField, TextField, BooleanField, IntegerField, ForeignKeyField, MySQLDatabase
 
 remote_db = MySQLDatabase(None)
 
@@ -19,7 +19,7 @@ class Paint(BaseModel):
 
 
 class Description(BaseModel):
-    Language = CharField(max_length=2)
+    Language = IntegerField()
     Name = CharField(max_length=300)
     Pseudonym = CharField(max_length=300)
     Medium = CharField(max_length=300)
