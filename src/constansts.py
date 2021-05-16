@@ -14,6 +14,7 @@ RECOART_CODE_PARAM = '/<string:recoart_code>'
 # External APIs
 RECOART_WIKI_API_URI = "https://recoart-py-wiki-api.herokuapp.com/api/v1"
 RECOART_WIKI_DESCRIPTIONS_URI = RECOART_WIKI_API_URI + "/wikidescriptions/"
+RECOART_WIKI_DESCRIPTIONS_LANGUAGE_PARAM = 'lang'
 
 JSON_MIME_TYPE = 'application/json'
 
