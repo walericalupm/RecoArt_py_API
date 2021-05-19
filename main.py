@@ -1,14 +1,11 @@
-from models import *
-from views import *
-from api import *
-
-
-def create_tables():
-    with db:
-        db.create_tables([Description, Paint])
+from src.api import *
+from src.app import load_database, app
 
 
 if __name__ == '__main__':
-    create_tables()
+    load_database()
     app.debug = True
-    app.run(debug=True)
+    app.run(port=int(os.environ.get("PORT", 80)),
+            debug=True,
+            host='0.0.0.0')
+
