@@ -1,0 +1,132 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Welcome to RecoArt API for RecoArt APP. This API was developed with Flask and retrieve information for RecoArt Paints. RecoArt is an iOS APP to identify Art Paints (more information about RecoArt APP at [RecoArt master final project](http://oa.upm.es/52908/) ).",
+    "version": "1.0.1",
+    "title": "RecoArt API",
+    "contact": {
+      "email": "e.aldas@alumnos.upm.es"
+    }
+  },
+  "host": "recoart-api.herokuapp.com",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "art",
+      "description": "Retrieve information about Art paints"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/art/{code}": {
+      "get": {
+        "tags": [
+          "art"
+        ],
+        "summary": "Find a paint by RecoArt Code",
+        "description": "Return all information about art paint with our descriptions in some languages",
+        "operationId": "get_art_painitings_by_code",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "Recoart paint code of art paint to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Paint"
+            }
+          },
+          "404": {
+            "description": "Paint not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Description": {
+      "type": "object",
+      "properties": {
+        "Language": {
+          "type": "integer",
+          "format": "int64",
+          "example": "0"
+        },
+        "Name": {
+          "type": "string",
+          "example": "El Retrato de Lisa Gherardini, esposa de Francesco del Giocondo"
+        },
+        "Pseudonym": {
+          "type": "string",
+          "example": "La Mona Lisa"
+        },
+        "Medium": {
+          "type": "string",
+          "example": "Pintura al óleo sobre tabla de álamo"
+        },
+        "Description": {
+          "type": "string",
+          "example": "El Retrato de Lisa Gherardini, esposa..."
+        }
+      }
+    },
+    "Paint": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64",
+          "example": 1
+        },
+        "Code": {
+          "type": "string",
+          "example": "AP_001_001"
+        },
+        "Artist": {
+          "type": "string",
+          "example": "Leondardo da Vinci"
+        },
+        "Year": {
+          "type": "string",
+          "example": "1530"
+        },
+        "Location": {
+          "type": "string",
+          "example": "Musée du Louvre, Paris"
+        },
+        "Image": {
+          "type": "string",
+          "example": "/9j/4AAQSkZJRgABAQ..."
+        },
+        "Link": {
+          "type": "string",
+          "example": "https://www.louvre.fr/en/oeuvre-notices/mona-lisa-portrait-lisa-gherardini-wife-francesco-del-giocondo"
+        },
+        "ExistWikiDescription": {
+          "type": "boolean",
+          "example": true
+        },
+        "Descriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Description"
+          }
+        }
+      }
+    }
+  }
+}

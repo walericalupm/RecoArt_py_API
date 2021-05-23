@@ -1,12 +1,18 @@
+from flask import render_template, redirect, url_for
 from src.app import app
 from src.queries import get_art_painting_by_code
 from src.utils import api_resource_response, api_error_response
 from src.constansts import *
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello to RecoArt API'
+@app.route(URI_INDEX)
+def index():
+    return redirect(url_for(GET_API_DOCS_METHOD_NAME))
+
+
+@app.route(BASE_URI_V1 + URI_API_DOCS)
+def get_api_docs():
+    return render_template(SWAGGER_TEMPLATE)
 
 
 @app.route(BASE_URI_V1 + URI_RECOART_PAINT + RECOART_CODE_PARAM, methods=[GET])
