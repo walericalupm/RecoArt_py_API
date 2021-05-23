@@ -2,7 +2,7 @@ from tests.base_test_setup import BaseTestCase, get_monalisa_paint
 import src.models as models
 from src.api import get_art_painitings_by_code
 from src.app import app
-from src.constansts import OK, BASE_URI_V1, URI_RECOART_PAINT, URI_INDEX, REDIRECT_FOUND
+from src.constants import OK, BASE_URI_V1, URI_RECOART_PAINT, URI_INDEX, REDIRECT_FOUND
 
 
 class RecoArtDBIT(BaseTestCase):

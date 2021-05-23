@@ -3,7 +3,7 @@ from flask_cors import cross_origin
 from src.app import app
 from src.queries import get_art_painting_by_code
 from src.utils import api_resource_response, api_error_response
-from src.constansts import *
+from src.constants import *
 
 
 @app.route(URI_INDEX)

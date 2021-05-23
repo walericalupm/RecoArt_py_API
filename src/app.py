@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 import src.models as models
 from dotenv import dotenv_values
-from src.constansts import TEMPLATE_FOLDER_DIR, STATIC_FOLDER_DIR, FLASK_CONFIG_CORS_HEADERS_KEY,FLASK_CONFIG_CORS_HEADERS_VALUE
+from src.constants import TEMPLATE_FOLDER_DIR, STATIC_FOLDER_DIR, FLASK_CONFIG_CORS_HEADERS_KEY,FLASK_CONFIG_CORS_HEADERS_VALUE
 
 app = Flask(__name__,
             template_folder=TEMPLATE_FOLDER_DIR,

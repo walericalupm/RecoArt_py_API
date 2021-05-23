@@ -1,4 +1,4 @@
-from src.constansts import JSON_MIME_TYPE, NOT_FOUND, MESSAGE, NOT_FOUND_MESSAGE, SERVER_ERROR_MESSAGE
+from src.constants import JSON_MIME_TYPE, NOT_FOUND, MESSAGE, NOT_FOUND_MESSAGE, SERVER_ERROR_MESSAGE
 from src.app import app
 from flask import json
 

@@ -1,7 +1,7 @@
 from src.models import Paint, Description
 from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
-from src.constansts import OK, NOT_FOUND, SERVER_ERROR
+from src.constants import OK, NOT_FOUND, SERVER_ERROR
 from src.wikidata_api import get_wikidata_descriptions
 from src.dtos import DescriptionWikidataDTO
 
