@@ -1,8 +1,11 @@
 from flask import Flask
 import src.models as models
 from dotenv import dotenv_values
+from src.constansts import TEMPLATE_FOLDER_DIR, STATIC_FOLDER_DIR
 
-app = Flask(__name__)
+app = Flask(__name__,
+            template_folder=TEMPLATE_FOLDER_DIR,
+            static_folder=STATIC_FOLDER_DIR)
 
 
 def create_tables():
