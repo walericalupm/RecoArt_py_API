@@ -7,12 +7,12 @@ from src.constansts import *
 
 @app.route(URI_INDEX)
 def index():
-    return redirect(url_for('get_api_docs'))
+    return redirect(url_for(GET_API_DOCS_METHOD_NAME))
 
 
 @app.route(BASE_URI_V1 + URI_API_DOCS)
 def get_api_docs():
-    return render_template('swaggerui.html')
+    return render_template(SWAGGER_TEMPLATE)
 
 
 @app.route(BASE_URI_V1 + URI_RECOART_PAINT + RECOART_CODE_PARAM, methods=[GET])
