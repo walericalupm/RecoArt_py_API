@@ -1,5 +1,5 @@
 import requests
-from src.constansts import RECOART_WIKI_DESCRIPTIONS_URI, OK, RECOART_WIKI_DESCRIPTIONS_LANGUAGE_PARAM
+from src.constants import RECOART_WIKI_DESCRIPTIONS_URI, OK, RECOART_WIKI_DESCRIPTIONS_LANGUAGE_PARAM
 from src.dtos import DescriptionsWikidataDTO
 
 
